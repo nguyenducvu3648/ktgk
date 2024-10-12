@@ -5,6 +5,9 @@ import com.example.ktgk.Dto.Request.ProductUpdateRequest;
 import com.example.ktgk.Dto.Response.ApiResponse;
 import com.example.ktgk.Dto.Response.ProductResponse;
 import com.example.ktgk.Service.ProductService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponses;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -16,9 +19,11 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequestMapping("/product")
+@Api(value = "User Management System", description = "Operations pertaining to user management")
 public class ProductController {
-    ProductService productService ;
 
+    ProductService productService ;
+    @ApiOperation(value = "View a list of available users", response = List.class)
     @GetMapping("/getAll")
     public ApiResponse<List<ProductResponse>> getAll(){
         return productService.getAllProducts();
