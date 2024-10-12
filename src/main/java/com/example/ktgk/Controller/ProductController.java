@@ -39,9 +39,7 @@ public class ProductController {
     @PutMapping("/updateProduct/{id}")
     public ApiResponse<ProductResponse> updateProduct(@PathVariable String id, @RequestBody ProductUpdateRequest request){
         ApiResponse<ProductResponse> apiResponse = new ApiResponse<>();
-        ApiResponse.builder()
-                .data(productService.updateProduct(id, request))
-                .build();
+        apiResponse.setData(productService.updateProduct(id, request));
         return apiResponse;
     }
 
